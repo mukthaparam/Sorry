@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apology 😢</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        /* Main styling */
+        body {
+            font-family: 'Patrick Hand', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f6d1e8, #f8c8c9, #ffe1a1); /* Bright pastel colors */
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            max-width: 500px;
+            padding: 30px;
+            background-color: #fff;
+            border: 6px dashed #ff6b6b; /* Dashed border for a quirky look */
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transform: scale(1.05);
+            transition: transform 0.2s ease;
+        }
+        .container:hover {
+            transform: scale(1.1); /* Slight enlarge on hover */
+        }
+        h1 {
+            font-size: 3em;
+            color: #ff6b6b;
+            margin: 0;
+            animation: shake 0.5s; /* Shake effect for fun */
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #333;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            background-color: #ffeaa7;
+            color: #333;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 25px;
+            margin: 10px;
+            font-family: 'Patrick Hand', cursive;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff7675;
+            transform: translateY(-2px); /* Slight raise effect */
+        }
+        #pleaseMessage {
+            color: #e74c3c;
+            font-size: 1.5em;
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+            animation: bounce 0.5s infinite; /* Bouncing effect */
+        }
+        /* Bounce animation for "Please" message */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        /* Shake animation for title */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="content">
+        <h1> Sorry Bhava 😢</h1>
+        <p id="letter">Sorry Bhava! I know you're sad and hurt.<br>Won't repeat it again.<br>Will you forgive me and be normal like before? 🥺🙏</p>
+        <div class="buttons" id="buttonSection" style="display: none;">
+            <button onclick="acceptApology()">Yes, I do 🥳</button>
+            <button onclick="rejectApology()">No, I won't 😡</button>
+        </div>
+        <p id="pleaseMessage">Please 🥺</p>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+
+        // Show letter first, then show options after a short delay
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById("buttonSection").style.display = "block";
+            }, 2000);  // Display buttons after 2 seconds
+        }
+
+        // Function for "Yes" option
+        function acceptApology() {
+            const content = document.getElementById("content");
+            content.innerHTML = `
+                <h1>Hooray! 🎉</h1>
+                <p>Thank you for accepting my apology! Love you Bhava! ❤️<br>Let’s celebrate with ice cream! 🍦🥳</p>
+            `;
+            content.style.backgroundColor = "#d4edda";  /* light green background for thank-you */
+            content.style.border = "6px solid #28a745";
+        }
+
+        // Function for "No" option
+        function rejectApology() {
+            noClickCount++;
+            const pleaseMessage = document.getElementById("pleaseMessage");
+            pleaseMessage.style.display = "block";
+
+            // Display different "Please" messages based on click count
+            if (noClickCount % 2 === 1) {
+                pleaseMessage.textContent = "Please na 🥺";
+            } else {
+                pleaseMessage.textContent = "Please Please na 🥺🥺";
+            }
+
+            // Add silly sound effects (requires audio files)
+            const audio = new Audio("https://www.soundjay.com/button/sounds/button-3.mp3");
+            audio.play();
+        }
+    </script>
+</body>
+</html>
